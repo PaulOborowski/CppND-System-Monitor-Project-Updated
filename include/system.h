@@ -20,7 +20,12 @@ class System {
 
   // TODO: Define any necessary private members
  private:
-  Processor cpu_ = {};
+  std::string operatingsystem;
+  std::string kernel;
+  int runningProcesses = -1;  // -1 equals to invalid value
+  int totalProcesses = -1;    // -1 equals to invalid value
+  Processor cpu_;
+  long upTime;
   std::vector<Process> processes_ = {};
 };
 
