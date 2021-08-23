@@ -1,8 +1,6 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
-#include <iostream>
-#include <map>
 #include <string>
 #include <vector>
 
@@ -22,8 +20,13 @@ class System {
 
   // TODO: Define any necessary private members
  private:
+  std::string operatingsystem;
+  std::string kernel;
+  int runningProcesses = -1;  // -1 equals to invalid value
+  int totalProcesses = -1;    // -1 equals to invalid value
   Processor cpu_;
-  std::vector<Process> processes_;
+  long upTime;
+  std::vector<Process> processes_ = {};
 };
 
 #endif

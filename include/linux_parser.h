@@ -45,13 +45,19 @@ long Jiffies();
 long ActiveJiffies();
 long ActiveJiffies(int pid);
 long IdleJiffies();
+std::vector<long> ProcessTimes(int pid);
 
 // Processes
 std::string Command(int pid);
 std::string Ram(int pid);
 std::string Uid(int pid);
-std::string User(int pid);
+std::string User(int uid);
 long int UpTime(int pid);
+
+// Helper Functions
+std::string LineParser(std::string const &path, std::string const &qkey,
+                       std::vector<char> const &repBef,
+                       std::vector<char> const &repAft);
 };  // namespace LinuxParser
 
 #endif
