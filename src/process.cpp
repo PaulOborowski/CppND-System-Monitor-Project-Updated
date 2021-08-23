@@ -21,7 +21,7 @@ Process::Process(int newPid, long upTimeSystem) : pid(newPid) {
   this->cpuUtilization = this->CpuUtilization(upTimeSystem);
   this->ram = LinuxParser::Ram(this->pid);
   this->command = LinuxParser::Command(this->pid);
-  this->upTime= LinuxParser::UpTime(this->pid);
+  this->upTime = LinuxParser::UpTime(this->pid);
   /* debug using command line
   this->command = to_string(this->processTimes[0])  + " "
   +to_string(this->processTimes[1]) + " " + to_string(this->processTimes[4]) + "
@@ -50,9 +50,11 @@ float Process::CpuUtilization(long upTimeSystem) {
 }
 
 // TODO: Return the command that generated this process
-string Process::Command() { 
-  if (this->command.size()>40) return this->command.substr(0,40).append("...");
-  return this->command; }
+string Process::Command() {
+  if (this->command.size() > 40)
+    return this->command.substr(0, 40).append("...");
+  return this->command;
+}
 
 // TODO: Return this process's memory utilization
 string Process::Ram() { return this->ram; }

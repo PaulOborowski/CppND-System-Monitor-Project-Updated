@@ -32,7 +32,8 @@ vector<Process>& System::Processes() {
       this->processes_.emplace_back(pid, this->upTime);
     }
     // sort processes
-    std::sort(this->processes_.begin(), this->processes_.end(),std::greater<Process>());
+    std::sort(this->processes_.begin(), this->processes_.end(),
+              std::greater<Process>());
   }
   return this->processes_;
 }
