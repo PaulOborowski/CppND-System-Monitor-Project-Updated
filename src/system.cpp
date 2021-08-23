@@ -28,10 +28,11 @@ vector<Process>& System::Processes() {
   this->UpTime();  // refresh system uptime once
   if (!pids.empty()) {
     for (int pid : pids) {
-      this->processes_.emplace_back(Process(pid, this->upTime));
+      // emplace_back calls the constructor, no need for Process() call
+      this->processes_.emplace_back(pid, this->upTime);
     }
     // sort processes
-    std::sort(this->processes_.begin(), this->processes_.end());
+    std::sort(this->processes_.begin(), this->processes_.end(),std::greater<Process>());
   }
   return this->processes_;
 }

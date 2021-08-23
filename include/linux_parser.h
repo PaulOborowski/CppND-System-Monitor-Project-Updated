@@ -55,8 +55,9 @@ std::string User(int uid);
 long int UpTime(int pid);
 
 // Helper Functions
-std::string LineParser(std::string path, std::string qkey,
-                       std::vector<char> repBef, std::vector<char> repAft);
+std::string LineParser(std::string const &path, std::string const &qkey,
+                       std::vector<char> const &repBef,
+                       std::vector<char> const &repAft);
 };  // namespace LinuxParser
 
 #endif

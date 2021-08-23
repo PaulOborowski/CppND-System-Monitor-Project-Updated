@@ -17,6 +17,7 @@ class Process {
   std::string Ram();                       // TODO: See src/process.cpp
   long int UpTime();                       // TODO: See src/process.cpp
   bool operator<(Process const& a) const;  // TODO: See src/process.cpp
+  bool operator>(Process const& a) const; 
 
   // TODO: Declare any necessary private members
  private:
@@ -27,7 +28,7 @@ class Process {
   float cpuUtilization;
   std::vector<long> processTimes;
   std::string ram;
-  long int uptime;
+  long int upTime;
 
   float CpuUtilization(
       long upTimeSystem);  // should be only called by constructor

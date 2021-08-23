@@ -56,7 +56,7 @@ vector<int> LinuxParser::Pids() {
   vector<int> pids;
   for (const auto entry : std::filesystem::directory_iterator(kProcDirectory)) {
     if (entry.is_directory()) {
-      string filename = entry.path().filename();      
+      string filename = entry.path().filename();
       if (std::all_of(filename.begin(), filename.end(), isdigit)) {
         int pid = stoi(filename);
         pids.push_back(pid);
@@ -217,11 +217,12 @@ string LinuxParser::Command(int pid) {
 // TODO: Read and return the memory used by a process
 // REMOVE: [[maybe_unused]] once you define the function
 string LinuxParser::Ram(int pid) {
-  // VmSize converted to MB
+  // converted to MB
+  // used VmRSS instead VmSize, to show physical memory used
   return std::to_string(
       std::stol(LineParser(
           kProcDirectory + std::to_string(pid) + "/" + kStatusFilename,
-          "VmSize:", {}, {})) /
+          "VmRSS:", {}, {})) /
       1024);
 }
 
@@ -261,10 +262,10 @@ long int LinuxParser::UpTime(int pid) {
   return UpTime() - processTimes[4];
 }
 
-
 // Helper Function for line parsing
-string LinuxParser::LineParser(string path, string qkey, vector<char> repBef,
-                               vector<char> repAft) {
+string LinuxParser::LineParser(string const &path, string const &qkey,
+                               vector<char> const &repBef,
+                               vector<char> const &repAft) {
   string line;
   string key;
   string value;
